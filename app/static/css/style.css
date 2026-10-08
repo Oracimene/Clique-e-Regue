@@ -1,0 +1,268 @@
+:root {
+  --verde: #2f7d32;
+  --verde-escuro: #1b5e20;
+  --verde-claro: #c8e6c9;
+  --terra: #8d5a3b;
+  --creme: #fff8e7;
+  --papel: #fdf3d7;
+  --texto: #2b2b2b;
+  --roxo-acai: #4a1942;
+  --erro: #c62828;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Fredoka", system-ui, sans-serif;
+  color: var(--texto);
+  background: linear-gradient(180deg, #a5d6a7 0%, #e8f5e9 60%, #d7ccc8 100%);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1, h2, h3 { margin: 0 0 12px; }
+
+.painel {
+  background: var(--creme);
+  border: 4px solid var(--verde);
+  border-radius: 20px;
+  padding: 32px 24px;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 8px 0 var(--verde-escuro);
+}
+
+.logo { color: var(--verde-escuro); font-size: 2.2rem; }
+.subtitulo { margin: 0 0 24px; color: var(--terra); }
+
+.abas { display: flex; gap: 8px; margin-bottom: 20px; }
+.aba {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--verde-escuro);
+  background: var(--verde-claro);
+  font-weight: 600;
+}
+.aba.ativa { background: var(--verde); color: #fff; }
+
+.formulario { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.formulario label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
+.formulario label.linha { flex-direction: row; justify-content: space-between; align-items: center; }
+.formulario input[type="text"], .formulario input:not([type]), .formulario input[type="password"] {
+  padding: 10px 12px;
+  border: 2px solid var(--verde-claro);
+  border-radius: 10px;
+  font: inherit;
+}
+.formulario input:focus { outline: none; border-color: var(--verde); }
+.formulario input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--verde); }
+.formulario input[type="range"] { accent-color: var(--verde); }
+
+.botao {
+  display: inline-block;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 14px;
+  background: var(--verde);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--verde-escuro);
+  transition: transform .08s, box-shadow .08s;
+}
+.botao:hover { filter: brightness(1.08); }
+.botao:active { transform: translateY(4px); box-shadow: 0 0 0 var(--verde-escuro); }
+.botao-grande { font-size: 1.3rem; padding: 16px; }
+.botao-secundario { background: var(--terra); box-shadow: 0 4px 0 #5d3a25; margin-top: 16px; }
+
+.menu { display: flex; flex-direction: column; gap: 14px; }
+
+.flashes { max-width: 420px; width: 100%; margin: 0 auto 16px; }
+.flash { margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--verde-claro); }
+.flash-erro { background: #ffcdd2; color: var(--erro); }
+
+.dica { font-size: .9rem; color: #666; }
+.lista-creditos { list-style: none; padding: 0; }
+.lista-creditos li { padding: 4px 0; }
+
+/* ---------- Tela do jogo ---------- */
+.tela-jogo .container { justify-content: flex-start; }
+
+.barra-jogo { display: flex; justify-content: space-between; align-items: center; }
+.barra-jogo .botao-secundario { margin-top: 0; }
+
+.livro {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform .15s;
+}
+.livro img { width: 72px; height: 72px; }
+.livro:hover { transform: rotate(-6deg) scale(1.08); }
+
+.cenario {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 24px;
+}
+.planta {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .1s;
+}
+.planta:active { transform: scale(.95); }
+.vaso { width: 180px; }
+
+/* ---------- Modal da enciclopédia ---------- */
+.modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10; }
+.modal[hidden] { display: none; }
+.modal-fundo { position: absolute; inset: 0; background: rgba(0,0,0,.5); }
+.pagina-livro {
+  position: relative;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--papel);
+  border-left: 14px solid var(--roxo-acai);
+  border-radius: 8px 16px 16px 8px;
+  padding: 28px 28px 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  line-height: 1.5;
+}
+.livro-cabecalho { margin: 0 0 8px; color: var(--terra); font-weight: 600; }
+.pagina-livro h2 { color: var(--roxo-acai); font-size: 1.8rem; margin-bottom: 0; }
+.pagina-livro h3 { margin-top: 18px; color: var(--verde-escuro); }
+.cientifico { font-style: italic; margin-top: 0; color: #666; }
+.fechar {
+  position: absolute; top: 8px; right: 12px;
+  background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--terra);
+}
+
+/* ---------- Crescimento ---------- */
+.info-estagio { text-align: center; margin-bottom: 8px; }
+.contador-estagio { margin: 0; color: var(--terra); font-weight: 600; }
+.nome-estagio { color: var(--verde-escuro); font-size: 2rem; margin: 0; }
+.descricao-estagio { margin: 4px auto 0; max-width: 420px; }
+
+.area-planta { display: block; width: 200px; height: 240px; margin-bottom: -20px; position: relative; z-index: 1; }
+.estagio-img { width: 100%; height: 100%; }
+.planta.cresceu .estagio-img { animation: crescer .6s ease-out; }
+@keyframes crescer {
+  0% { transform: scale(.6); opacity: .3; }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.gota {
+  position: fixed;
+  pointer-events: none;
+  font-weight: 600;
+  color: #1565c0;
+  animation: subir .8s ease-out forwards;
+}
+@keyframes subir {
+  to { transform: translateY(-50px); opacity: 0; }
+}
+
+.progresso { width: 100%; max-width: 360px; margin-top: 16px; text-align: center; }
+.barra-progresso {
+  height: 22px;
+  background: var(--creme);
+  border: 3px solid var(--verde-escuro);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.barra-preenchida {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #66bb6a, var(--verde));
+  transition: width .2s ease-out;
+}
+.texto-progresso { margin: 6px 0 0; font-weight: 600; }
+.dica-jogo { margin-top: 8px; color: var(--verde-escuro); }
+
+.lista-estagios li.atual { font-weight: 600; color: var(--roxo-acai); }
+
+/* ---------- Recursos, abas e coleção ---------- */
+.barra-jogo { gap: 12px; flex-wrap: wrap; }
+.recursos { display: flex; gap: 10px; }
+.recurso {
+  background: var(--creme);
+  border: 3px solid var(--verde-escuro);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 1.1rem;
+}
+
+.abas-jogo { max-width: 420px; width: 100%; margin: 20px auto 0; }
+.abas-jogo .aba { border: none; font: inherit; cursor: pointer; }
+.selo {
+  display: inline-block;
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--roxo-acai);
+  color: #fff;
+  font-size: .85rem;
+}
+
+.colecao { padding-top: 16px; }
+.colecao-vazia, .aviso {
+  text-align: center;
+  background: var(--creme);
+  border-radius: 14px;
+  padding: 14px;
+  max-width: 520px;
+  margin: 0 auto 16px;
+}
+.aviso { border: 3px solid var(--verde); font-weight: 600; color: var(--verde-escuro); }
+.aviso.erro { border-color: var(--erro); color: var(--erro); }
+
+.grade-arvores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.cartao-arvore {
+  background: var(--creme);
+  border: 4px solid var(--verde);
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 6px 0 var(--verde-escuro);
+}
+.cartao-img { width: 120px; height: 144px; }
+.cartao-nome { font-size: 1.2rem; color: var(--verde-escuro); margin: 4px 0; }
+.cartao-arvore p { margin: 4px 0; }
+.cartao-frutos { font-weight: 600; color: var(--roxo-acai); }
+.cartao-tempo, .cartao-colheitas { font-size: .9rem; color: #666; }
+.botao-colher { margin-top: 10px; background: var(--roxo-acai); box-shadow: 0 4px 0 #2a0e26; }
+
+.recompensa { font-size: 1.4rem; font-weight: 600; color: var(--verde-escuro); }
+#modal-colheita .botao { margin-top: 12px; }

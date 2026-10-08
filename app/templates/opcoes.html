@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Opções · Clique e Regue{% endblock %}
+{% block content %}
+<section class="painel">
+  <h1>Opções</h1>
+  <form class="formulario" id="form-opcoes">
+    <label class="linha">
+      <span>Som</span>
+      <input type="checkbox" id="opt-som">
+    </label>
+    <label>Volume <span id="valor-volume"></span>
+      <input type="range" id="opt-volume" min="0" max="100">
+    </label>
+  </form>
+  <p class="dica">As preferências ficam salvas neste navegador.</p>
+  <a href="{{ url_for('main.menu') }}" class="botao botao-secundario">Voltar ao menu</a>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/opcoes.js') }}"></script>{% endblock %}

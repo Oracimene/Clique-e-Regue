@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Créditos · Clique e Regue{% endblock %}
+{% block content %}
+<section class="painel">
+  <h1>Créditos</h1>
+  <h2>Equipe</h2>
+  <ul class="lista-creditos">
+    <li>Icaro Sousa Santos</li>
+    <li>Nome do integrante</li>
+    <!-- Adicione aqui os demais integrantes -->
+  </ul>
+  <h2>Projeto</h2>
+  <p>Jogo educacional sobre plantio e cultura paraense, desenvolvido para a faculdade.</p>
+  <a href="{{ url_for('main.menu') }}" class="botao botao-secundario">Voltar ao menu</a>
+</section>
+{% endblock %}

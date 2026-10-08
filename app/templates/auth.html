@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Entrar · Clique e Regue{% endblock %}
+{% block content %}
+<section class="painel">
+  <h1 class="logo">🌱 Clique e Regue</h1>
+  <p class="subtitulo">Plante, cuide e conheça a cultura paraense</p>
+
+  <nav class="abas">
+    <a href="{{ url_for('auth.login') }}" class="aba {% if aba == 'login' %}ativa{% endif %}">Login</a>
+    <a href="{{ url_for('auth.cadastro') }}" class="aba {% if aba == 'cadastro' %}ativa{% endif %}">Cadastro</a>
+  </nav>
+
+  {% if aba == 'login' %}
+  <form method="post" action="{{ url_for('auth.login') }}" class="formulario">
+    <label>Usuário <input name="username" required autofocus></label>
+    <label>Senha <input type="password" name="password" required></label>
+    <button type="submit" class="botao">Entrar</button>
+  </form>
+  {% else %}
+  <form method="post" action="{{ url_for('auth.cadastro') }}" class="formulario">
+    <label>Usuário <input name="username" minlength="3" maxlength="20" required autofocus></label>
+    <label>Senha <input type="password" name="password" minlength="6" required></label>
+    <label>Confirmar senha <input type="password" name="confirm" minlength="6" required></label>
+    <button type="submit" class="botao">Criar conta</button>
+  </form>
+  {% endif %}
+</section>
+{% endblock %}

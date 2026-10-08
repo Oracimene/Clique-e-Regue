@@ -1,0 +1,75 @@
+[
+  {
+    "id": "acai",
+    "nome": "Açaí",
+    "nome_cientifico": "Euterpe oleracea",
+    "descricao": "Palmeira nativa da Amazônia que cresce em áreas de várzea. Seus frutos roxos, pequenos e redondos, dão origem à polpa de açaí, alimento essencial na mesa paraense.",
+    "como_plantar": [
+      "Escolha sementes maduras e deixe-as de molho em água por 24 a 48 horas.",
+      "Plante a 2 cm de profundidade em solo úmido, rico em matéria orgânica.",
+      "Mantenha a muda à meia-sombra e regue com frequência: o açaí gosta de umidade.",
+      "Depois de 6 a 8 meses, transplante a muda para um local definitivo com bastante água."
+    ],
+    "curiosidade_cultural": "No Pará, o açaí é tomado puro, acompanhado de peixe frito ou farinha d'água, e faz parte do almoço do dia a dia. O Pará é o maior produtor de açaí do Brasil, e uma lenda indígena conta que o fruto surgiu das lágrimas de Iaçá, filha de um cacique: o nome 'açaí' seria o nome dela ao contrário.",
+    "estagios": [
+      {
+        "id": "semente",
+        "nome": "Semente",
+        "progresso_necessario": 10,
+        "imagem": "img/acai/1-semente.svg",
+        "descricao": "O caroço do açaí foi plantado. Ele precisa de água e umidade para despertar."
+      },
+      {
+        "id": "germinacao",
+        "nome": "Germinação",
+        "progresso_necessario": 15,
+        "imagem": "img/acai/2-germinacao.svg",
+        "descricao": "A semente se abriu e o primeiro brotinho começa a sair da terra."
+      },
+      {
+        "id": "muda",
+        "nome": "Muda",
+        "progresso_necessario": 25,
+        "imagem": "img/acai/3-muda.svg",
+        "descricao": "As primeiras folhas se abriram. A muda gosta de meia-sombra e de solo sempre úmido."
+      },
+      {
+        "id": "jovem",
+        "nome": "Açaizeiro jovem",
+        "progresso_necessario": 40,
+        "imagem": "img/acai/4-jovem.svg",
+        "descricao": "O estipe (tronco) começa a se formar e as folhas ganham a forma de pena."
+      },
+      {
+        "id": "adulto",
+        "nome": "Açaizeiro adulto",
+        "progresso_necessario": 60,
+        "imagem": "img/acai/5-adulto.svg",
+        "descricao": "A palmeira está alta e esguia. Na natureza, isso leva de 3 a 5 anos."
+      },
+      {
+        "id": "frutos",
+        "nome": "Produção de frutos",
+        "progresso_necessario": null,
+        "imagem": "img/acai/6-frutos.svg",
+        "descricao": "Os cachos estão carregados de frutos roxos, prontos para virar o açaí da mesa paraense!"
+      }
+    ],
+    "colheita": {
+      "nome_arvore": "Açaizeiro",
+      "frutos_maximos": 5,
+      "segundos_por_fruto": 30,
+      "moedas_por_fruto": 2,
+      "imagem_com_frutos": "img/acai/6-frutos.svg",
+      "imagem_sem_frutos": "img/acai/5-adulto.svg",
+      "curiosidades": [
+        "Os peconheiros sobem o açaizeiro com a peconha, um laço de fibra preso aos pés, para alcançar os cachos no alto da palmeira.",
+        "Depois de colhidos, os frutos são debulhados, ou seja, separados do cacho, e transportados em rasas: cestos de palha que também servem de medida na venda.",
+        "Em Belém, os barcos carregados de açaí chegam de madrugada à Feira do Açaí, ao lado do Ver-o-Peso, vindos das ilhas e do interior.",
+        "Antes de bater o açaí, os frutos passam pelo branqueamento: um mergulho rápido em água quente que elimina o barbeiro, transmissor da doença de Chagas.",
+        "Na batedeira, os frutos ficam de molho em água morna para amolecer e depois são batidos para separar a polpa do caroço.",
+        "Os caroços que sobram da batedeira não são desperdiçados: viram adubo, biojoias e artesanato."
+      ]
+    }
+  }
+]

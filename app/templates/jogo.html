@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Jogo · Clique e Regue{% endblock %}
+{% block body_class %}tela-jogo{% endblock %}
+{% block content %}
+<header class="barra-jogo">
+  <a href="{{ url_for('main.menu') }}" class="botao botao-secundario">← Voltar ao menu</a>
+  <div class="recursos">
+    <span class="recurso" title="Moedas">🪙 <strong id="moedas">{{ colecao.moedas }}</strong></span>
+    <span class="recurso" title="Colheitas realizadas">🧺 <strong id="total-colheitas">{{ colecao.colheitas }}</strong></span>
+  </div>
+  <button type="button" class="livro" id="abrir-livro" data-planta="{{ planta.id }}" title="Enciclopédia">
+    <img src="{{ url_for('static', filename='img/livro.svg') }}" alt="Enciclopédia">
+  </button>
+</header>
+
+<nav class="abas abas-jogo" role="tablist">
+  <button type="button" class="aba ativa" role="tab" data-aba="vaso" aria-selected="true">🪴 Vaso</button>
+  <button type="button" class="aba" role="tab" data-aba="colecao" aria-selected="false">
+    🌳 Coleção <span class="selo" id="selo-colecao" hidden></span>
+  </button>
+</nav>
+
+<section class="cenario" id="aba-vaso" role="tabpanel">
+  <div class="info-estagio">
+    <p class="contador-estagio" id="contador-estagio">Estágio {{ estado.estagio_indice + 1 }} de {{ estado.total_estagios }}</p>
+    <h1 class="nome-estagio" id="nome-estagio">{{ estado.estagio.nome }}</h1>
+    <p class="descricao-estagio" id="descricao-estagio">{{ estado.estagio.descricao }}</p>
+  </div>
+
+  <button type="button" class="planta" id="planta" aria-label="Regar o {{ planta.nome }}">
+    <span class="area-planta">
+      <img src="{{ estado.estagio.imagem }}" alt="{{ estado.estagio.nome }}" class="estagio-img" id="estagio-img">
+    </span>
+    <img src="{{ url_for('static', filename='img/vaso.svg') }}" alt="" class="vaso">
+  </button>
+
+  <div class="progresso">
+    <div class="barra-progresso" id="barra-progresso" role="progressbar"
+         aria-label="Progresso do estágio" aria-valuemin="0">
+      <div class="barra-preenchida" id="barra-preenchida"></div>
+    </div>
+    <p class="texto-progresso" id="texto-progresso"></p>
+  </div>
+  <p class="dica-jogo" id="dica-jogo">Clique na planta para regar 💧</p>
+</section>
+
+<section class="colecao" id="aba-colecao" role="tabpanel" hidden>
+  <p class="aviso" id="aviso-colecao" hidden></p>
+  <p class="colecao-vazia" id="colecao-vazia">
+    Sua coleção ainda está vazia. Cuide do açaizeiro no vaso até ele produzir frutos!
+  </p>
+  <div class="grade-arvores" id="grade-arvores"></div>
+</section>
+
+<template id="modelo-arvore">
+  <article class="cartao-arvore">
+    <img class="cartao-img" alt="">
+    <h2 class="cartao-nome"></h2>
+    <p class="cartao-frutos"></p>
+    <p class="cartao-tempo"></p>
+    <p class="cartao-colheitas"></p>
+    <button type="button" class="botao botao-colher" hidden>🧺 Colher</button>
+  </article>
+</template>
+
+<script id="estado-inicial" type="application/json">{{ estado | tojson }}</script>
+<script id="colecao-inicial" type="application/json">{{ colecao | tojson }}</script>
+
+<div class="modal" id="modal-colheita" hidden>
+  <div class="modal-fundo" data-fechar></div>
+  <article class="pagina-livro" role="dialog" aria-modal="true" aria-labelledby="colheita-titulo">
+    <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+    <h2 id="colheita-titulo">Colheita realizada! 🧺</h2>
+    <p class="recompensa" id="colheita-recompensa"></p>
+    <h3>Você sabia?</h3>
+    <p id="colheita-curiosidade"></p>
+    <button type="button" class="botao" data-fechar>Continuar</button>
+  </article>
+</div>
+
+<div class="modal" id="modal-livro" hidden>
+  <div class="modal-fundo" data-fechar></div>
+  <article class="pagina-livro" role="dialog" aria-modal="true" aria-labelledby="livro-nome">
+    <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+    <p class="livro-cabecalho">📖 Enciclopédia</p>
+    <h2 id="livro-nome"></h2>
+    <p class="cientifico" id="livro-cientifico"></p>
+    <p id="livro-descricao"></p>
+    <h3>Como plantar</h3>
+    <ol id="livro-como-plantar"></ol>
+    <h3>Etapas de crescimento</h3>
+    <ol id="livro-estagios" class="lista-estagios"></ol>
+    <h3>Cultura paraense</h3>
+    <p id="livro-curiosidade"></p>
+  </article>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/jogo.js') }}"></script>{% endblock %}

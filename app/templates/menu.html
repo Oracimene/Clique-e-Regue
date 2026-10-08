@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="painel">
+  <h1 class="logo">🌱 Clique e Regue</h1>
+  <p class="subtitulo">Olá, {{ current_user.username }}!</p>
+  <nav class="menu">
+    <a href="{{ url_for('main.jogo') }}" class="botao botao-grande">Jogar</a>
+    <a href="{{ url_for('main.opcoes') }}" class="botao botao-grande">Opções</a>
+    <a href="{{ url_for('main.creditos') }}" class="botao botao-grande">Créditos</a>
+    <a href="{{ url_for('auth.logout') }}" class="botao botao-secundario">Sair</a>
+  </nav>
+</section>
+{% endblock %}
